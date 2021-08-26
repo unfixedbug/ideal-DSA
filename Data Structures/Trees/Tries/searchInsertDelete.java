@@ -1,26 +1,5 @@
+
 import java.util.*;
-
-public class trie_insert_search_delete {
-    // implemenation of trie
-    public static void main(String[] args) {
-
-        // creating a trie from class Trie
-        Trie trie = new Trie();
-        // tree.root = new TrieNode();
-
-        // helper input
-        String keys[] = { "the", "a", "there", "answer", "any", "by", "bye", "their" };
-
-        // constructing a trie from class Trie
-        for (int i = 0; i < keys.length; i++) {
-            trie.insert(keys[i]);
-        }
-
-        System.out.println(trie.search("the"));
-        System.out.println(trie.search("googlebc"));
-
-    }
-}
 
 // 1) Trie(generic class)
 // 2) trie_insert_search_delete(public assesible class)
@@ -56,7 +35,7 @@ class Trie {
         Trie curr = this;
         for (char c : key.toCharArray()) {
             curr = curr.children.get(c - 'a');
-            if (curr.children.get(c - 'a') == null) {
+            if (curr == null) {
                 return false;
             }
         }
@@ -64,6 +43,68 @@ class Trie {
         return curr.isLeaf;
     }
 
+    public void delete(String key) {
+        Trie curr = this;
+
+    }
+
+    public boolean isEmpty(Trie root) {
+        for (int i = 0; i < 26; i++) {
+            if (root.children.get(i) != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public Trie remove(Trie root, String key,int depth) {
+        if(root==null){
+            return null;
+        }
+        if(depth==key.length()){
+            if(root.isLeaf){
+                root.isLeaf = false;
+            }
+            if(isEmpty(root)){
+                root=null;
+            }
+            return root;
+        }
+
+        // if not last charactert recur for the children
+        int index = key.charAt(depth) - 'a';
+        root.children.set(index,remove(root.children.get(index),key,depth+1));
+
+        if(isEmpty(root) && root.isLeaf==false){
+            root=null;
+        }
+        return root;
+    }
+
+}
+
+public class searchInsertDelete {
+    // implemenation of trie
+    public static void main(String[] args) {
+
+        // creating a trie from class Trie
+        Trie trie = new Trie();
+        // tree.root = new TrieNode();
+
+        // helper input
+        String keys[] = { "the", "a", "there", "answer", "any", "by", "bye", "their" };
+
+        // constructing a trie from class Trie
+        for (int i = 0; i < keys.length; i++) {
+            trie.insert(keys[i]);
+        }
+
+        System.out.println(trie.search("the"));
+        trie.remove(trie, keys[0], 0);
+        System.err.println(trie.search(keys[0]));
+        // System.out.println(trie.search("googlebc"));
+        
+
+    }
 }
 
 class Trieeeee { // using array
