@@ -43,10 +43,7 @@ class Trie {
         return curr.isLeaf;
     }
 
-    public void delete(String key) {
-        Trie curr = this;
-
-    }
+    
 
     public boolean isEmpty(Trie root) {
         for (int i = 0; i < 26; i++) {
@@ -56,6 +53,9 @@ class Trie {
         }
         return true;
     }
+
+
+    //remove the string from the Trie
     public Trie remove(Trie root, String key,int depth) {
         if(root==null){
             return null;
@@ -107,7 +107,8 @@ public class searchInsertDelete {
     }
 }
 
-class Trieeeee { // using array
+class Trieeeee { 
+    // using array
     private static final int CHAR_SIZE = 26;
 
     // trie Node(another constructer)
