@@ -2,6 +2,8 @@
     "java.project.sourcePaths": [
         "Data Structures/Trees/Heap",
         "Data Structures/Stack",
-        "Algorithms/graph"
+        "Data Structures/Range Queries",
+        "Algorithms/graph",
+        ""
     ]
 }
