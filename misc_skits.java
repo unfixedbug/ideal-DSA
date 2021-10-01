@@ -1,4 +1,4 @@
-public class mics {
+public class misc_skits {
 
     // get a random number between a - b
 
@@ -25,5 +25,8 @@ public class mics {
             n = n >> 2;
         }
         return isMultipleof3(Math.abs(oddCount - evenCount));
+    }
+    public static void main(String[] args) {
+        System.out.println("dori");
     }
 }
