@@ -1,7 +1,6 @@
-import javax.swing.UIDefaults.LazyInputMap;
 
 /* SET1: sum queries  */
-/* SET2: minimum max queires*/
+/* SET2: minimum max queries*/
 
 //memory allocated for segment tree 2*2^(log2(n))-1
 //time complexity: O(nlogn)
@@ -9,6 +8,7 @@ class SegmentTree {
 
     int st[];
 
+    // constructer
     SegmentTree(int arr[], int n) {
         // height of tree
         int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
@@ -50,6 +50,8 @@ class SegmentTree {
         if (qs <= ss && qe >= se) { // segment tree lies under the query ir (qs - ss - se - qe)
             return st[si];
         }
+
+        // out of bound
         if (se < qs || ss > qe)
             return 0;
 
@@ -58,6 +60,7 @@ class SegmentTree {
 
     }
 
+    // i is the index to update
     void updatevalue(int arr[], int n, int i, int new_value) {
         if (i < 0 || i > n - 1)
             return;
@@ -89,7 +92,7 @@ class SegmentTree {
     }
 }
 
-class SegmentTreeRMQ {
+class SegmentTreeRMQ {// minimum vala ha ye bhai
     int st[];
 
     int minVal(int x, int y) {
@@ -110,7 +113,7 @@ class SegmentTreeRMQ {
      */
 
     int RMQUtil(int ss, int se, int qs, int qe, int index) {
-        if (qs <= se && qe >= se) {
+        if (qs <= ss && se <= qe) {
             return st[index];
         }
         if (se < qs || ss > qe)
