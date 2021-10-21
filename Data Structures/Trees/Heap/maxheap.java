@@ -34,3 +34,10 @@ class maxheap {
         return n;
     }
 }
+
+
+/*
+for heap sort:
+    1) create a heap
+    2) delte the root and put it in the last(heap space)
+*/
