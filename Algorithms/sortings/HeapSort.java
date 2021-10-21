@@ -1,4 +1,4 @@
-package sortings;
+package Algorithms.sortings;
 
 public class HeapSort {
     public void sort(int arr[]) {
