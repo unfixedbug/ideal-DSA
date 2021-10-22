@@ -3,14 +3,103 @@ import java.lang.*;
 import java.io.*;
 
 // finding the minimum spanning tree of an (Undirected,weighted,connected  graph)
+//williams O(ELog(E))
 public class krushkalsMST {
+    static class UnionFind {
+        private int[] id, sz;
 
-    // int v=4,e=5;
-    // Graph graph= new Graph(v,e);
-    // graph.edges[0].src=0;
+        public UnionFind(int n) {
+            id = new int[n];
+            sz = new int[n];
+            for (int i = 0; i < n; i++) {
+                id[i] = i;
+                sz[i] = 1;
+            }
+        }
 
+        public int find(int p) {
+            int root = p;
+            while (root != id[root]) {
+                root = id[root];
+            }
+            // do path compression
+            while (p != root) {
+                int next = id[p];
+                id[p] = root;
+                p = next;
+            }
+            return root;
+        }
+
+        public boolean connected(int p, int q) {
+            return find(p) == find(q);
+        }
+
+        public int size(int p) {
+            return sz[find(p)];
+        }
+
+        public void union(int p, int q) {
+            int root1 = find(p);
+            int root2 = find(q);
+            if (root1 == root2)
+                return;
+            if (sz[root1] < sz[root2]) {
+                sz[root2] += sz[root1];
+                id[root1] = root2;
+            } else {
+                sz[root1] += sz[root2];
+                id[root2] = root1;
+            }
+        }
+    }
+
+    static class Edge implements Comparable<Edge> {
+        int from, to, weight;
+
+        public Edge(int from, int to, int weight) {
+            this.from = from;
+            this.to = to;
+            this.weight = weight;
+        }
+
+        @Override
+        public int compareTo(Edge other) {
+            return this.weight - other.weight;
+        }
+    }
+    // Given a graph represented as an edge list this method finds
+    // the Minimum Spanning Tree (MST) cost if there exists
+    // a MST, otherwise it returns null.
+
+    static Long krushkasls(Edge[] edges, int n) {
+        if (edges == null)
+            return null;
+        long sum = 0L;
+
+        java.util.Arrays.sort(edges);
+        UnionFind uf = new UnionFind(n);
+
+        for (Edge edge : edges) {
+            if (uf.connected(edge.from, edge.to))
+                continue;
+            // agar dono alag alag hait to
+            uf.union(edge.from, edge.to);
+            sum += edge.weight;
+
+            // early compeeletion
+            if (uf.size(0) == n - 1)
+                break;
+
+        }
+        if (uf.size(0) != n)
+            return null;
+
+        return sum;
+    }
 }
 
+// traditional
 class Graph {
     class Edge implements Comparable<Edge> {
         int src, dest, weight;
