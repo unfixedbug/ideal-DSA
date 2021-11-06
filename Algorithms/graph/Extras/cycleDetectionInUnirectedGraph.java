@@ -70,3 +70,45 @@ class cycleDetectionInUnirectedGraphBFS {
     }
 
 }
+
+// using DFS
+class cycleDetectionInUnirectedGraphDFS {
+
+    // recursion BKL
+    // return tree if cycle is present else false
+    public static boolean DFS(Graph graph, int v, boolean[] visited, int parent) {
+        visited[v] = true;
+        for (int child : graph.adjList.get(v)) {
+            if (!visited[child]) {
+                if (DFS(graph, child, visited, v)) {
+                    return true;
+                }
+            } else if (child != parent) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    // driver Code
+    public static void main(String[] args) {
+        // List of graph edges
+        List<Edge> edges = Arrays.asList(new Edge(0, 1), new Edge(0, 6), new Edge(0, 7), new Edge(1, 2), new Edge(1, 5),
+                new Edge(2, 3), new Edge(2, 4), new Edge(7, 8), new Edge(7, 11), new Edge(8, 9), new Edge(8, 10),
+                new Edge(10, 11)
+        // edge (10, 11) introduces a cycle in the graph
+        );
+
+        // total number of nodes in the graph (0 to 11)
+        int n = 12;
+
+        // build a graph from the given edges
+        Graph graph = new Graph(edges, n);
+
+        // to keep track of whether a vertex is discovered or not
+        boolean[] discovered = new boolean[n];
+
+        // Perform DFS traversal from the first vertex
+        System.out.println(DFS(graph, 0, discovered, -1));
+}
