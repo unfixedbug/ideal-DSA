@@ -100,7 +100,7 @@ public class krushkalsMST {
 }
 
 // traditional
-class Graph {
+class Graph1 {
     class Edge implements Comparable<Edge> {
         int src, dest, weight;
 
@@ -118,7 +118,7 @@ class Graph {
     int V, E;
     Edge edges[];
 
-    Graph(int v, int e) {
+    Graph1(int v, int e) {
         V = v;
         E = e;
         edges = new Edge[E];
@@ -208,7 +208,7 @@ class Graph {
     public static void main(String[] args) {
         int V = 4; // Number of vertices in graph
         int E = 5; // Number of edges in graph
-        Graph graph = new Graph(V, E);
+        Graph1 graph = new Graph1(V, E);
 
         // add edge 0-1
         graph.edges[0].src = 0;

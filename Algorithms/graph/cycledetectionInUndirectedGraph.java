@@ -60,3 +60,7 @@ class Node {
         this.Parent = Parent;
     }
 }
+
+class cycleDetectionUsingDSU{
+    
+}

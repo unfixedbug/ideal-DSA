@@ -111,4 +111,5 @@ class cycleDetectionInUnirectedGraphDFS {
 
         // Perform DFS traversal from the first vertex
         System.out.println(DFS(graph, 0, discovered, -1));
+    }
 }
