@@ -1,8 +1,9 @@
-package Algorithms.graph;
+
 import java.util.*;
-public class Graph {
+
+public class GraphDS {
     // edge with source and dest
-    class Edge {
+    public class Edge {
         int source, dest;
 
         public Edge(int source, int dest) {
@@ -11,11 +12,11 @@ public class Graph {
         }
     }
 
-    class Graph {
+    public class Graph {
 
         List<List<Integer>> adjList = null;
 
-        // constructor
+        // constructer
         Graph(List<Edge> edges, int n) {
             for (int i = 0; i < n; i++) {
                 adjList.add(new ArrayList<>());
@@ -29,7 +30,7 @@ public class Graph {
     }
 
     // edge with source, dest, cost i.e with edge weights
-    class Edge1 {
+    public class Edge1 {
         int source, dest, cost;
 
         public Edge1(int source, int dest, int cost) {
@@ -39,7 +40,7 @@ public class Graph {
         }
     }
 
-    class Graph1 {
+    public class Graph1 {
         List<List<Edge1>> adjList = null;
 
         Graph1(List<Edge1> edges, int n) {

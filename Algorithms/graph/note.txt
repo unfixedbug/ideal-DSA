@@ -1,0 +1,3 @@
+
+graph ->class with no edge weights
+graph1 -. class with edge weights

@@ -1,40 +1,19 @@
 
+
 //BELLMAN FORD (SSSP) single source shortest path algorithm
 // src --> any vertex
 // detect negative cycle
 import java.util.*;
+// we need graph with edge weights ie Graph1
 
-class Edge {
-    int src, dest, cost;
-
-    public Edge(int src, int dest, int cost) {
-        this.src = src;
-        this.dest = dest;
-        this.cost = cost;
-    }
-}
-
-class Graph {
-    List<List<Edge>> adjList = null;
-
-    Graph(List<Edge> edges, int n) {
-        adjList = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            adjList.add(new ArrayList<>());
-        }
-
-        for (Edge e : edges) {
-            adjList.get(e.src).add(e);// list originating from the source has properties edge(src,dest,cost)
-        }
-
-    }
-}
+// import GraphDS.Edge1;
+// import GraphDS.Graph1;
 
 public class costOfShortestPath {
     // perform dfs on the graph and set the departure time of each node
-    private static int DFS(Graph graph, int v, boolean[] visited, int[] departure, int time) {
+    private static int DFS(Graph1 graph, int v, boolean[] visited, int[] departure, int time) {
         visited[v] = true;
-        for (Edge edge : graph.adjList.get(v)) { // all nodes whose start(source) node is v
+        for (Edge1 edge : graph.adjList.get(v)) { // all nodes whose start(source) node is v
             int u = edge.dest;
             if (!visited[u]) {
                 time = DFS(graph, u, visited, departure, time);
@@ -49,7 +28,7 @@ public class costOfShortestPath {
     // the funtion performs the toplogical sort on DAG and finds longest distance of
     // all vertices, from a given source
 
-    private static void findShortestDistance(Graph graph, int src, int n) {
+    private static void findShortestDistance(Graph1 graph, int src, int n) {
         // stores vertex number using the departure time as an index
         // ie which vertex was visited first bro
         int departure[] = new int[n];
@@ -74,11 +53,10 @@ public class costOfShortestPath {
         for (int i = n - 1; i >= 0; i--) {
             int v = departure[i]; // process the last element first
             // and relax the cost of its adjacent edges
-            for (Edge edge : graph.adjList.get(v)) {
+            for (Edge1 edge : graph.adjList.get(v)) {
                 int u = edge.dest; // edge from v -> u
                 int w = edge.cost; // weight of the edge
 
-                
                 // int w = edge.cost * -1;
 
                 /*
@@ -100,15 +78,15 @@ public class costOfShortestPath {
     /// main function driver code
     public static void main(String[] args) {
         // List of graph edges as per the above diagram
-        List<Edge> edges = Arrays.asList(new Edge(0, 6, 2), new Edge(1, 2, -4), new Edge(1, 4, 1), new Edge(1, 6, 8),
-                new Edge(3, 0, 3), new Edge(3, 4, 5), new Edge(5, 1, 2), new Edge(7, 0, 6), new Edge(7, 1, -1),
-                new Edge(7, 3, 4), new Edge(7, 5, -4));
+        List<Edge1> edges = Arrays.asList(new Edge1(0, 6, 2), new Edge1(1, 2, -4), new Edge1(1, 4, 1),
+                new Edge1(1, 6, 8), new Edge1(3, 0, 3), new Edge1(3, 4, 5), new Edge1(5, 1, 2), new Edge1(7, 0, 6),
+                new Edge1(7, 1, -1), new Edge1(7, 3, 4), new Edge1(7, 5, -4));
 
         // total number of nodes in the graph (labelled from 0 to 7)
         int n = 8;
 
         // build a graph from the given edges
-        Graph graph = new Graph(edges, n);
+        Graph1 graph = new Graph1(edges, n);
 
         // source vertex
         int source = 7;
