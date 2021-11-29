@@ -1,5 +1,14 @@
+/* Contents
 
-import java.util.Stack;
+Inorder Traversal
+Preorder Traversal
+Postorder Traversal
+Level Order Traversal
+Diamter of a Binary Tree
+*/
+
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Node {
     int data;
@@ -120,11 +129,24 @@ class postOrder {
 }
 
 class levelorder {
+    // O(n) solution
+    void printLevelOrder0n(Node root) {
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            Node now = q.poll();
+            System.out.print(now.data + " ");
+            if (now.left != null)
+                q.add(now.left);
+            if (now.right != null)
+                q.add(now.right);
+        }
+    }
 
     void levelorder(Node root) {/// bfs traversal ie 1-2-3-4-5
         int h = height(root);
-        
-        for (int j = 0; j <=h; j++) {
+
+        for (int j = 0; j <= h; j++) {
             printCurrentLevel(root, j);
         }
     }
@@ -154,4 +176,25 @@ class levelorder {
             printCurrentLevel(root.right, level - 1);
         }
     }
+}
+
+public class binarytree {
+    public static int getDiameter(Node root, AtomicInteger diameter) {
+        if (root == null) {
+            return 0;
+        }
+        int lheight = getDiameter(root.left, diameter);
+        int rheight = getDiameter(root.right, diameter);
+
+        int maxdimeter = lheight + rheight + 1;// lheight+rheight + root
+        diameter.set(Math.max(diameter.get(), maxdimeter));
+        return Math.max(lheight, rheight) + 1;
+    }
+
+    public static int getDiameter(Node root) {
+        AtomicInteger diameter = new AtomicInteger(0);
+        getDiameter(root, diameter);
+        return diameter.get();
+    }
+
 }

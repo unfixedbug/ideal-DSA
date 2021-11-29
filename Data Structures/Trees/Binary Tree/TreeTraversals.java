@@ -14,7 +14,6 @@ class Node {
     }
 }
 
-
 class LevelOrderT {
     Node root;
 
@@ -22,6 +21,18 @@ class LevelOrderT {
     // public BinaryTreeLevelOrder() {
     // root = null;
     // }
+    void printLevelOrder0n() {
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            Node now = q.poll();
+            System.out.print(now.data + " ");
+            if (now.left != null)
+                q.add(now.left);
+            if (now.right != null)
+                q.add(now.right);
+        }
+    }
 
     void printlevelorder() {
         int h = height(root);
@@ -100,7 +111,7 @@ public class TreeTraversals {
         LevelOrderT tree = new LevelOrderT();
         // ZigZagT tree = new ZigZagT();
 
-        //org main
+        // org main
         tree.root = new Node(1);
         tree.root.left = new Node(2);
         tree.root.right = new Node(3);
@@ -109,13 +120,15 @@ public class TreeTraversals {
         tree.root.right.left = new Node(5);
         tree.root.right.right = new Node(4);
 
-
-
         // System.out.println("zigzag traversal of binary tree is ");
         // tree.PrintZigZagTreeTraversal();
 
         System.out.println("level order traversal of binary tree is ");
         tree.printlevelorder();
+
+        // level order traversal in o(n) worse case time complexity
+        // System.out.println("level order traversal of binary tree is ");
+        // tree.printLevelOrder0n();
 
     }
 }
