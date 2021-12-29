@@ -2,13 +2,15 @@
 /*
 two methods for TOP SORT
 
-1)
+1) using dfs (add after recursion ends)
 2) KAHNS algo, traverse through nodes with in-degree 0
 */
 import java.util.*;
 
 public class topologicalSort {
 
+
+    // better solution on leetcode submission 1, course schedule 2 
     static int dfs(Graph graph, int v, boolean[] visited, int[] departure, int time) {
         visited[v] = true;
 

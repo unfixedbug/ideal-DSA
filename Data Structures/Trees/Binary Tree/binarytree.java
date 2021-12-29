@@ -179,6 +179,7 @@ class levelorder {
 }
 
 public class binarytree {
+    // get diameter of binary tree
     public static int getDiameter(Node root, AtomicInteger diameter) {
         if (root == null) {
             return 0;
@@ -186,8 +187,8 @@ public class binarytree {
         int lheight = getDiameter(root.left, diameter);
         int rheight = getDiameter(root.right, diameter);
 
-        int maxdimeter = lheight + rheight + 1;// lheight+rheight + root
-        diameter.set(Math.max(diameter.get(), maxdimeter));
+        int maxdiameter = lheight + rheight + 1;// lheight+rheight + root
+        diameter.set(Math.max(diameter.get(), maxdiameter));
         return Math.max(lheight, rheight) + 1;
     }
 
