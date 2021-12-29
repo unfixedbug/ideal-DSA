@@ -59,4 +59,34 @@ public class TreeViews {
         }
     }
 
+
+
+
+    // Right view
+    // 1) level order traversal, last node of the level is the right view
+    private static void rightView(Node root) {
+        if(root==null) return;
+        Queue<Node> q = new ArrayDeque<>();
+        q.add(root);
+        Node curr=null;
+        while(!q.isEmpty()){
+            // total number of nodes in the level
+            int size = q.size();
+            
+            int i=0;
+
+            // process every node of the current level and enqueue its nonempty right and right child
+            while(i++<size){
+                curr = q.remove();
+                // if this is the last node of the current level, print it
+                /*
+                    FOR LEFT VIEW OF TREE , (I==1)FIRST NODE OF THE LEVEL
+                */
+                if(i==size) System.out.print(curr.data+" ");
+                if(curr.right!=null) q.add(curr.right);
+                if(curr.left!=null) q.add(curr.left);
+            }
+        }
+    }
+
 }
