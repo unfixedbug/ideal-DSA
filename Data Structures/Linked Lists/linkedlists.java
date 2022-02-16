@@ -82,7 +82,7 @@ class sinlgyLinkedList {
         Node slow=head,fast=head;
 
         slow = slow.next;
-        fast = fasst.next.next;
+        fast = fast.next.next;
         //searching for loops actually
         while(fast!=null && fast.next !=null){
             if(slow ==fast){

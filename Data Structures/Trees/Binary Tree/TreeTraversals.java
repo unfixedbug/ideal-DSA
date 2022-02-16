@@ -13,6 +13,9 @@ class Node {
         left = right = null;
     }
 }
+// https://leetcode.com/problems/binary-tree-level-order-traversal/discuss/114449/A-general-approach-to-level-order-traversal-questions-in-Java
+
+// above is the sexiest post i have seen
 
 class LevelOrderT {
     Node root;

@@ -29,4 +29,10 @@ public class misc_skits {
     public static void main(String[] args) {
         System.out.println("dori");
     }
+
+    private void conversion(String none){
+        // given long num -> char array
+        long n1 = 12345678L;
+        char s[] = Long.toString(n1).toCharArray();
+    }
 }
