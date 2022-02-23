@@ -1,9 +1,10 @@
 import java.util.*;
-class BinaryTreeNode<T> {
-    int data;
-    BinaryTreeNode<T> left, right;
 
-    BinaryTreeNode(Integer data) {
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int data) {
         this.data = data;
         left = right = null;
     }
@@ -11,15 +12,15 @@ class BinaryTreeNode<T> {
 
 public class burnBinaryTree {
 
-    static class Node {
-        int data;
-        Node left, right;
+    // static class Node {
+    // int data;
+    // Node left, right;
 
-        Node(int data) {
-            this.data = data;
-            left = right = null;
-        }
-    }
+    // Node(int data) {
+    // this.data = data;
+    // left = right = null;
+    // }
+    // }
 
     static class Depth {
         int d;
@@ -63,68 +64,70 @@ public class burnBinaryTree {
 // parent tree method
 
 class timeToBurnBinaryTreeStriver {
-    private static BinaryTreeNode<Integer> bfsToMapParents(BinaryTreeNode<Integer> root,
-            HashMap<BinaryTreeNode<Integer>, BinaryTreeNode<Integer>> mpp, int start) {
-        Queue<BinaryTreeNode<Integer>> q = new LinkedList<>();
+    private static Node bfsToMapParents(Node root, HashMap<Node, Node> parents,
+            int start) {
+
+        Queue<Node> q = new LinkedList<>();
         q.offer(root);
-        BinaryTreeNode<Integer> res = new BinaryTreeNode<>(-1);
+
+        Node result = new Node(-1);
         while (!q.isEmpty()) {
-            BinaryTreeNode<Integer> node = q.poll();
-            if (node.data == start)
-                res = node;
-            if (node.left != null) {
-                mpp.put(node.left, node);
-                q.offer(node.left);
+            Node curr = q.poll();
+            if (curr.data == start)
+                result = curr;
+            if (curr.left != null) {
+                // children -> parent
+                parents.put(curr.left, curr);
             }
-            if (node.right != null) {
-                mpp.put(node.right, node);
-                q.offer(node.right);
+            if (curr.right != null) {
+                parents.put(curr.right, curr);
             }
         }
-        return res;
+        return result;
     }
 
-    private static int findMaxDistance(HashMap<BinaryTreeNode<Integer>, BinaryTreeNode<Integer>> mpp,
-            BinaryTreeNode<Integer> target) {
-        Queue<BinaryTreeNode<Integer>> q = new LinkedList<>();
+    private static int findMaxDistance(HashMap<Node, Node> parents, Node target) {
+        Queue<Node> q = new LinkedList<>();
         q.offer(target);
-        HashMap<BinaryTreeNode<Integer>, Integer> vis = new HashMap<>();
-        vis.put(target, 1);
+        // imporove by adding set here
+        Set<Node> visited = new HashSet<>();
+        visited.add(target);
         int maxi = 0;
-
         while (!q.isEmpty()) {
+            // number of elements we have to traverse in one unit time
+
             int sz = q.size();
-            int fl = 0;
+
+            boolean done = false;
 
             for (int i = 0; i < sz; i++) {
-                BinaryTreeNode<Integer> node = q.poll();
-                if (node.left != null && vis.get(node.left) == null) {
-                    fl = 1;
-                    vis.put(node.left, 1);
-                    q.offer(node.left);
-                }
-                if (node.right != null && vis.get(node.right) == null) {
-                    fl = 1;
-                    vis.put(node.right, 1);
-                    q.offer(node.right);
-                }
+                Node curr = q.poll();
 
-                if (mpp.get(node) != null && vis.get(mpp.get(node)) == null) {
-                    fl = 1;
-                    vis.put(mpp.get(node), 1);
-                    q.offer(mpp.get(node));
+                if (curr.left != null && !visited.contains(curr.left)) {
+                    done = true;
+                    visited.add(curr.left);
+                    q.offer(curr.left);
+                }
+                if (curr.right != null && !visited.contains(curr.right)) {
+                    done = true;
+                    visited.add(curr.right);
+                    q.offer(curr.right);
+                }
+                if (parents.get(curr) != null && !visited.contains(parents.get(curr))) { // parent of the current node is added 
+                    done = true;
+                    visited.add(parents.get(curr));
+                    q.offer(parents.get(curr));
                 }
             }
-            if (fl == 1)
+            if (done)
                 maxi++;
         }
         return maxi;
     }
 
-    public static int timeToBurnTree(BinaryTreeNode<Integer> root, int start) {
-        HashMap<BinaryTreeNode<Integer>, BinaryTreeNode<Integer>> mpp = new HashMap<>();
-        BinaryTreeNode<Integer> target = bfsToMapParents(root, mpp, start);
-        int maxi = findMaxDistance(mpp, target);
-        return maxi;
+    public static int timeToBurn(Node root, int start) {
+        HashMap<Node, Node> parents = new HashMap<>();
+        Node target = bfsToMapParents(root, parents, start);
+        return findMaxDistance(parents, target);
     }
 }
