@@ -18,7 +18,7 @@ class biPartiteGraphBFS {
             Integer node = q.poll();
             for (Integer child : adj.get(node)) {
                 if (color[child] == -1) {// uncoloured
-                    color[child] = 1 - color[node];
+                    color[child] = 1 - color[node];// color with another color 0->1, 1->0
                     q.add(child);
                 } else if (color[child] == color[node]) { // if coloured and has same color
                     return false;
