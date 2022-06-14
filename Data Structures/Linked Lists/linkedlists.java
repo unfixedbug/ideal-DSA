@@ -11,6 +11,7 @@ class sinlgyLinkedList {
         }
     }
 
+    // https://www.youtube.com/watch?v=ugQ2DVJJroc
     Node IterativeReverse(Node head) {
         Node prev = null;
         Node current = head;
