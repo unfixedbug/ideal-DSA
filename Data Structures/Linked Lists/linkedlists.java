@@ -28,6 +28,8 @@ class sinlgyLinkedList {
     }
 
     Node recursiveReverse(Node head) {
+
+         // null - head  - headNext - newHead
         if (head == null || head.next == null)
             return head;
         Node newHead = recursiveReverse(head.next);
