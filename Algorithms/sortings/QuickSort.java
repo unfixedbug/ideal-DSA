@@ -1,5 +1,7 @@
 package Algorithms.sortings;
 
+import java.util.*;
+
 // refer this for more: https://www.techiedelight.com/quicksort/
 // O(n.log(n)) , worst case O(n^2)
 
@@ -10,7 +12,7 @@ package Algorithms.sortings;
  * 
  * 
 */
-public class QuickSort {
+class QuickSort {
 
   static int partition(int[] a, int start, int end) {
     int pivot = a[end];
@@ -24,11 +26,12 @@ public class QuickSort {
     // before the pivot.
     for (int i = start; i < end; i++) {
       if (a[i] <= pivot) {
-        swap(arr, i, pIndex);
+        swap(a, i, pIndex);
+        pIndex++;
       }
     }
     // swap, pIndex,and pivot, cause pivot is smaller right!
-    swap(arr, pIndex, end);
+    swap(a, pIndex, end);
     return pIndex;
   }
 
