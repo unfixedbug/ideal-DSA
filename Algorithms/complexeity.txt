@@ -1,0 +1,6 @@
+
+Sorting algorithms:
+Merge Sort->
+Quick Sort-> n.log(n)
+Heap Sort->
+Selection Sort ->

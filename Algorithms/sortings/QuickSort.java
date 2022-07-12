@@ -17,7 +17,7 @@ class QuickSort {
   static int partition(int[] a, int start, int end) {
     int pivot = a[end];
 
-    // elements less than pivotin left, right than pivot in the right
+    // elements less than pivot  in left, right than pivot in the right
     // swap only if smaller element is present, take smaller element, swap it to the left
     int pIndex = start;
 
