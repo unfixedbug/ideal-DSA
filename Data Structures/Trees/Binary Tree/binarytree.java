@@ -4,7 +4,7 @@ Inorder Traversal
 Preorder Traversal
 Postorder Traversal
 Level Order Traversal
-Diamter of a Binary Tree
+Diameter of a Binary Tree
 
 */
 
