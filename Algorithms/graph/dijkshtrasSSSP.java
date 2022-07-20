@@ -9,6 +9,7 @@ https://dev.to/jjb/part-17-finding-shortest-paths-in-graphs-using-dijkstra-s-bfs
 https://www.techiedelight.com/single-source-shortest-paths-dijkstras-algorithm/
 
 */
-class dijkshtras {
 
-}
+// dijshtras, with priority queue, with node sorted ez
+//https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/
+class dijkshtras {}

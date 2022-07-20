@@ -2,7 +2,7 @@
  * fenwicktree
  * Binary indexed Tree (BIT) implementation
  * works same as segment tree (faster)
- *
+ * inversion count [merge sort, fenwick trees]
  *
  * point update, point query
  * range update, range query

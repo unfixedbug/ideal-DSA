@@ -1,9 +1,12 @@
 import java.util.Arrays;
+/*inversion count using merge sort
+ * 
+ */
 
 // find the number of inversion pairs in an array , a[i]>a[j] where i<j
 
-// werew using merge sort
-public class InversionCount {
+//  using merge sort
+public class inversionCount {
 
   private static int mergeAndCount(int arr[], int l, int m, int r) {
     int left[] = Arrays.copyOfRange(arr, l, m + 1); // excluding m+1, ie [l,m]

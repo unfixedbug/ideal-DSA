@@ -1,5 +1,3 @@
-package HiQualQuestions.Arrays;
-
 /*
  * Sort array of 0,1,2
  * 1) Counting Sort
@@ -14,7 +12,6 @@ public class DutchNationalFlag {
    * Such that [0,low,mid,high] -> 0,low  contains 0's
    *                            low, high contains 1's
    *                           high,n-1 contains 2's
-   */
    */
 
   public static void sort(int[] arr) {
@@ -34,5 +31,11 @@ public class DutchNationalFlag {
         high--;
       }
     }
+  }
+
+  private static void swap(int[] arr, int i, int j) {
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
   }
 }

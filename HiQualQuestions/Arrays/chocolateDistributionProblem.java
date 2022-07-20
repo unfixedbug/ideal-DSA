@@ -1,3 +1,4 @@
+//problem link -> https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem/0
 import java.util.*;
 
 class Solution {
