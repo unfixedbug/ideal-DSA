@@ -1,8 +1,9 @@
 {
     "java.project.sourcePaths": [
         "crucial",
+        "HiQualQuestions/Matrix",
         "HiQualQuestions/Arrays",
         "Algorithms/graph",
-        "HiQualQuestions/Matrix"
+        "HiQualQuestions/searching-and-sorting"
     ]
 }
