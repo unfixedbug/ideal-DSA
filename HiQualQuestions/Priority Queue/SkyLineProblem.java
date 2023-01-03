@@ -32,6 +32,7 @@ class skylineDrawing {
    * Represents either start or end of building
    */
   static class BuildingPoint implements Comparable<BuildingPoint> {
+
     int x;
     boolean isStart; // true for start, false for endpoint
     int height;
@@ -163,7 +164,6 @@ class pepCodingSolutionToSkylineProblem {
     List<List<Integer>> ans = new ArrayList<>();
     PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
     pq.add(0);
-    int max = 0;
 
     int cht = 0; //current height
     for (int i = 0; i < list.size(); i++) {
@@ -189,6 +189,7 @@ class pepCodingSolutionToSkylineProblem {
 
   // compare two pairs and return the one with higher height
   public class Pair implements Comparable<Pair> {
+
     int x;
     int height;
 

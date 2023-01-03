@@ -6,6 +6,8 @@
  *
  * point update, point query
  * range update, range query
+ * 
+ * https://www.youtube.com/watch?v=BHPez138yX8 -> best of best resource 
  *
  */
 
@@ -26,6 +28,9 @@ public class fenwicktree {
       index += index & (-index); // removeing the last set bit of the element
     }
   }
+
+  // if we update the index, we have to update the nums array also, and update BIT by (val-nums[index])
+  void initiate(int n, int index, int val){}
 
   // range update
   void updateRange(int l, int r, int value, int n) {
